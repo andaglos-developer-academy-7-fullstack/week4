@@ -7,23 +7,54 @@ Diberikan sebuah function digitPerkalianMinimum(angka) yang menerima satu parame
 
 Code
 */
+// function digitPerkalianMinimum(angka) {
+//     // you can only write your code here!
+//     let temp = [];
+//     for (let i = 0; i <= angka; i++) {
+//         for (let j = 0; j <= angka; j++) {
+//             if (i * j === angka) {
+//                 temp.push(i + '' + j);
+//             }
+//         }
+//     }
+//     let minLength = temp[0].length;
+//     for (let i = 0; i < temp.length; i++) {
+//         if (minLength > temp[i].length) {
+//             minLength = temp[i].length;
+//         }
+//     }
+//     return minLength;
+// }
+
+// // TEST CASES
+// console.log(digitPerkalianMinimum(24)); // 2
+// console.log(digitPerkalianMinimum(90)); // 3
+// console.log(digitPerkalianMinimum(20)); // 2
+// console.log(digitPerkalianMinimum(179)); // 4
+// console.log(digitPerkalianMinimum(1)); // 2
+
+// logic lain
 function digitPerkalianMinimum(angka) {
-    // you can only write your code here!
-    let temp = [];
-    for (let i = 0; i <= angka; i++) {
-        for (let j = 0; j <= angka; j++) {
-            if (i * j === angka) {
-                temp.push(i + '' + j);
-            }
-        }
+  // you can only write your code here!
+  var hasilKali = 0;
+  var faktorAngka;
+  var arr = [];
+  var arrSlice= [];
+  var digit = '';
+  
+  for(var i = 0; i <= angka; i ++) {
+    for(var j = 0; j <= angka; j ++) {
+      var tes = i + '-' + j;
+      hasilKali = i*j;
+      if (hasilKali === angka) {
+        faktorAngka = String(i) + String(j);
+        arr.push(faktorAngka);
+        arrSlice = arr.slice(Math.round(arr.length/2-1),Math.round(arr.length/2));
+        digit = arrSlice[0];
+      }
     }
-    let minLength = temp[0].length;
-    for (let i = 0; i < temp.length; i++) {
-        if (minLength > temp[i].length) {
-            minLength = temp[i].length;
-        }
-    }
-    return minLength;
+  }
+  return digit.length;
 }
 
 // TEST CASES
